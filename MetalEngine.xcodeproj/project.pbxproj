@@ -11,8 +11,6 @@
 		BDB1F3D821DDF2CD004AA44A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F3D721DDF2CD004AA44A /* ViewController.swift */; };
 		BDB1F3DA21DDF2CE004AA44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F3D921DDF2CE004AA44A /* Assets.xcassets */; };
 		BDB1F3DD21DDF2CE004AA44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F3DB21DDF2CE004AA44A /* Main.storyboard */; };
-		BDB1F3E921DDF2CE004AA44A /* MetalEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F3E821DDF2CE004AA44A /* MetalEngineTests.swift */; };
-		BDB1F3F421DDF2CE004AA44A /* MetalEngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F3F321DDF2CE004AA44A /* MetalEngineUITests.swift */; };
 		BDB1F40821DEA92B004AA44A /* Render.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F40721DEA92B004AA44A /* Render.swift */; };
 		BDB1F40B21DEAC55004AA44A /* teapot.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F40A21DEAC55004AA44A /* teapot.obj */; };
 		BDB1F40D21DEC1F6004AA44A /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F40C21DEC1F6004AA44A /* Shaders.metal */; };
@@ -45,11 +43,7 @@
 		BDB1F3DE21DDF2CE004AA44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDB1F3DF21DDF2CE004AA44A /* MetalEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalEngine.entitlements; sourceTree = "<group>"; };
 		BDB1F3E421DDF2CE004AA44A /* MetalEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDB1F3E821DDF2CE004AA44A /* MetalEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalEngineTests.swift; sourceTree = "<group>"; };
-		BDB1F3EA21DDF2CE004AA44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDB1F3EF21DDF2CE004AA44A /* MetalEngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalEngineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDB1F3F321DDF2CE004AA44A /* MetalEngineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalEngineUITests.swift; sourceTree = "<group>"; };
-		BDB1F3F521DDF2CE004AA44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDB1F40721DEA92B004AA44A /* Render.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Render.swift; sourceTree = "<group>"; };
 		BDB1F40A21DEAC55004AA44A /* teapot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = teapot.obj; sourceTree = "<group>"; };
 		BDB1F40C21DEC1F6004AA44A /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -85,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				BDB1F3D421DDF2CD004AA44A /* MetalEngine */,
-				BDB1F3E721DDF2CE004AA44A /* MetalEngineTests */,
-				BDB1F3F221DDF2CE004AA44A /* MetalEngineUITests */,
 				BDB1F3D321DDF2CD004AA44A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,24 +108,6 @@
 				BDB1F40C21DEC1F6004AA44A /* Shaders.metal */,
 			);
 			path = MetalEngine;
-			sourceTree = "<group>";
-		};
-		BDB1F3E721DDF2CE004AA44A /* MetalEngineTests */ = {
-			isa = PBXGroup;
-			children = (
-				BDB1F3E821DDF2CE004AA44A /* MetalEngineTests.swift */,
-				BDB1F3EA21DDF2CE004AA44A /* Info.plist */,
-			);
-			path = MetalEngineTests;
-			sourceTree = "<group>";
-		};
-		BDB1F3F221DDF2CE004AA44A /* MetalEngineUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BDB1F3F321DDF2CE004AA44A /* MetalEngineUITests.swift */,
-				BDB1F3F521DDF2CE004AA44A /* Info.plist */,
-			);
-			path = MetalEngineUITests;
 			sourceTree = "<group>";
 		};
 		BDB1F40921DEABFF004AA44A /* Resources */ = {
@@ -287,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB1F3E921DDF2CE004AA44A /* MetalEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB1F3F421DDF2CE004AA44A /* MetalEngineUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
