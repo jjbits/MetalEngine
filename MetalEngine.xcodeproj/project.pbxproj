@@ -15,6 +15,7 @@
 		BDB1F40B21DEAC55004AA44A /* teapot.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F40A21DEAC55004AA44A /* teapot.obj */; };
 		BDB1F40D21DEC1F6004AA44A /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F40C21DEC1F6004AA44A /* Shaders.metal */; };
 		BDB1F40F21DF0BBD004AA44A /* MathUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F40E21DF0BBC004AA44A /* MathUtilities.swift */; };
+		BDB1F41121E1DC6A004AA44A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F41021E1DC6A004AA44A /* Scene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		BDB1F40A21DEAC55004AA44A /* teapot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = teapot.obj; sourceTree = "<group>"; };
 		BDB1F40C21DEC1F6004AA44A /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		BDB1F40E21DF0BBC004AA44A /* MathUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathUtilities.swift; sourceTree = "<group>"; };
+		BDB1F41021E1DC6A004AA44A /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				BDB1F3DF21DDF2CE004AA44A /* MetalEngine.entitlements */,
 				BDB1F40721DEA92B004AA44A /* Render.swift */,
 				BDB1F40C21DEC1F6004AA44A /* Shaders.metal */,
+				BDB1F41021E1DC6A004AA44A /* Scene.swift */,
 			);
 			path = MetalEngine;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				BDB1F40D21DEC1F6004AA44A /* Shaders.metal in Sources */,
 				BDB1F3D821DDF2CD004AA44A /* ViewController.swift in Sources */,
+				BDB1F41121E1DC6A004AA44A /* Scene.swift in Sources */,
 				BDB1F3D621DDF2CD004AA44A /* AppDelegate.swift in Sources */,
 				BDB1F40821DEA92B004AA44A /* Render.swift in Sources */,
 				BDB1F40F21DF0BBD004AA44A /* MathUtilities.swift in Sources */,
