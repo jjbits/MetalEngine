@@ -16,6 +16,8 @@
 		BDB1F40D21DEC1F6004AA44A /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F40C21DEC1F6004AA44A /* Shaders.metal */; };
 		BDB1F40F21DF0BBD004AA44A /* MathUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F40E21DF0BBC004AA44A /* MathUtilities.swift */; };
 		BDB1F41121E1DC6A004AA44A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB1F41021E1DC6A004AA44A /* Scene.swift */; };
+		BDB1F41521E3208B004AA44A /* blub.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F41321E3208B004AA44A /* blub.obj */; };
+		BDB1F41621E3208B004AA44A /* bob.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB1F41421E3208B004AA44A /* bob.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		BDB1F40C21DEC1F6004AA44A /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		BDB1F40E21DF0BBC004AA44A /* MathUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathUtilities.swift; sourceTree = "<group>"; };
 		BDB1F41021E1DC6A004AA44A /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		BDB1F41321E3208B004AA44A /* blub.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blub.obj; sourceTree = "<group>"; };
+		BDB1F41421E3208B004AA44A /* bob.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bob.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		BDB1F40921DEABFF004AA44A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BDB1F41321E3208B004AA44A /* blub.obj */,
+				BDB1F41421E3208B004AA44A /* bob.obj */,
 				BDB1F40A21DEAC55004AA44A /* teapot.obj */,
 			);
 			path = Resources;
@@ -227,7 +233,9 @@
 			files = (
 				BDB1F3DA21DDF2CE004AA44A /* Assets.xcassets in Resources */,
 				BDB1F3DD21DDF2CE004AA44A /* Main.storyboard in Resources */,
+				BDB1F41521E3208B004AA44A /* blub.obj in Resources */,
 				BDB1F40B21DEAC55004AA44A /* teapot.obj in Resources */,
+				BDB1F41621E3208B004AA44A /* bob.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

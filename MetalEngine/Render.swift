@@ -39,6 +39,8 @@ class Renderer: NSObject, MTKViewDelegate {
   var viewMatrix = matrix_identity_float4x4
   var projectionMatrix = matrix_identity_float4x4
   
+  static let fishCount = 12
+  
   init(view: MTKView, device: MTLDevice) {
     self.device = device
     commandQueue = device.makeCommandQueue()!
@@ -82,10 +84,10 @@ class Renderer: NSObject, MTKViewDelegate {
     let options: [MTKTextureLoader.Option: Any] = [.generateMipmaps : true, .SRGB : true]
     
     let scene = Scene()
-    scene.ambientLightColor = float3(0.01, 0.01, 0.01)
-    let light0 = Light(worldPosition: float3(2, 2, 2), color: float3(1, 0, 0))
-    let light1 = Light(worldPosition: float3(-2, 2, 2), color: float3(0, 1, 0))
-    let light2 = Light(worldPosition: float3(0, -2, 2), color: float3(0, 0, 1))
+    scene.ambientLightColor = float3(0.1, 0.1, 0.1)
+    let light0 = Light(worldPosition: float3(5, 5, 0), color: float3(0.3, 0.3, 0.3))
+    let light1 = Light(worldPosition: float3(-5, 5, 0), color: float3(0.3, 0.3, 0.3))
+    let light2 = Light(worldPosition: float3(0, -5, 0), color: float3(0.3, 0.3, 0.3))
     scene.lights = [light0, light1, light2]
     
     let teapot = Node(name: "Teapot")
@@ -96,6 +98,39 @@ class Renderer: NSObject, MTKViewDelegate {
     teapot.material.specularPower = 200
     teapot.material.specularColor = float3(0.8, 0.8, 0.8)
     scene.rootNode.children.append(teapot)
+    
+    let bob = Node(name: "Bob")
+    let bobMaterial = Material()
+    let bobBaseColorTexture = try? textureLoader.newTexture(name: "bob_baseColor",
+                                                            scaleFactor: 1.0,
+                                                            bundle: nil,
+                                                            options: options)
+    bobMaterial.baseColorTexture = bobBaseColorTexture
+    bobMaterial.specularPower = 100
+    bobMaterial.specularColor = float3(0.8, 0.8, 0.8)
+    bob.material = bobMaterial
+    let bobURL = Bundle.main.url(forResource: "bob", withExtension: "obj")!
+    let bobAsset = MDLAsset(url: bobURL, vertexDescriptor: vertexDescriptor, bufferAllocator: bufferAllocator)
+    bob.mesh = try! MTKMesh.newMeshes(asset: bobAsset, device: device).metalKitMeshes.first!
+    teapot.children.append(bob)
+    
+    let blubMaterial = Material()
+    let blubBaseColorTexture = try? textureLoader.newTexture(name: "blub_baseColor",
+                                                             scaleFactor: 1.0,
+                                                             bundle: nil,
+                                                             options: options)
+    blubMaterial.baseColorTexture = blubBaseColorTexture
+    blubMaterial.specularPower = 40
+    blubMaterial.specularColor = float3(0.8, 0.8, 0.8)
+    let blubURL = Bundle.main.url(forResource: "blub", withExtension: "obj")!
+    let blubAsset = MDLAsset(url: blubURL, vertexDescriptor: vertexDescriptor, bufferAllocator: bufferAllocator)
+    let blubMesh = try! MTKMesh.newMeshes(asset: blubAsset, device: device).metalKitMeshes.first!
+    for i in 1...fishCount {
+      let blub = Node(name: "Blub \(i)")
+      blub.material = blubMaterial
+      blub.mesh = blubMesh
+      bob.children.append(blub)
+    }
     
     return scene
   }
@@ -132,13 +167,36 @@ class Renderer: NSObject, MTKViewDelegate {
     time += 1 / Float(view.preferredFramesPerSecond)
     
     cameraWorldPosition = float3(0, 0, 2)
-    viewMatrix = float4x4(translationBy: -cameraWorldPosition)
+    viewMatrix = float4x4(translationBy: -cameraWorldPosition) * float4x4(rotationAbout: float3(1, 0, 0), by: .pi/6)
     
     let aspectRatio = Float(view.drawableSize.width / view.drawableSize.height)
-    projectionMatrix = float4x4(perspectiveProjectionFov: Float.pi / 3, aspectRatio: aspectRatio, nearZ: 0.1, farZ: 100)
+    projectionMatrix = float4x4(perspectiveProjectionFov: Float.pi / 6, aspectRatio: aspectRatio, nearZ: 0.1, farZ: 100)
     
     let angle = -time
-    scene.rootNode.modelMatrix = float4x4(rotationAbout: float3(0, 1, 0), by: angle) * float4x4(scaleBy: 1.5)
+    scene.rootNode.modelMatrix = float4x4(rotationAbout: float3(0, 1, 0), by: angle)
+    
+    if let bob = scene.nodeNamed("Bob") {
+      bob.modelMatrix = float4x4(translationBy: float3(0, 0.015*sin(time*5), 0))
+    }
+    
+    let blubBaseTransform = float4x4(rotationAbout: float3(0, 0, 1), by: -.pi/2) *
+                            float4x4(scaleBy: 0.25) *
+                            float4x4(rotationAbout: float3(0, 1, 0), by: -.pi/2)
+    let fishCount = Renderer.fishCount
+    let pivotPosition = float3(0.4, 0, 0)
+    let rotationOffset = float3(0.4, 0, 0)
+    let rotationSpeed = Float(0.3)
+    for i in 1...fishCount {
+      if let blub = scene.nodeNamed("Blub \(i)") {
+        let rotationAngle = 2 * Float.pi * Float(rotationSpeed * time) + (2 * Float.pi/Float(fishCount)*Float(i-1))
+        let horizonAngle = 2 * .pi / Float(fishCount) * Float(i-1)
+        blub.modelMatrix = float4x4(rotationAbout: float3(0, 1, 0), by: horizonAngle) *
+                           float4x4(translationBy: rotationOffset) *
+                           float4x4(rotationAbout: float3(0, 0, 1), by: rotationAngle) *
+                           float4x4(translationBy: pivotPosition) *
+                           blubBaseTransform
+      }
+    }
   }
   
   func drawNodeRecursive(_ node: Node, parentTransform: float4x4, commandEncoder: MTLRenderCommandEncoder) {
